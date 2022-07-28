@@ -1,0 +1,13 @@
+<%= render 'header' %>
+
+
+<div id = "body">
+  <h1>新しいツイート</h1>
+
+  <%= render 'form', post: @post %>
+
+  <%= link_to '戻る', posts_path %>  
+</div>
+
+
+<%= render 'footer' %>

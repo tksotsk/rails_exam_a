@@ -1,0 +1,17 @@
+<%= render 'header' %>
+
+
+<div id = "body">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>内容:</strong>
+    <%= @post.content %>
+  </p>
+
+  <%= link_to 'ツイートを編集する', edit_post_path(@post) %> |
+  <%= link_to '戻る', posts_path %>
+
+</div>
+
+<%= render 'footer' %>
