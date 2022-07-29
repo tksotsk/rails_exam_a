@@ -22,17 +22,17 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
+    if params[:back]
+      render :new
+    else
       if @post.save
-        format.html { redirect_to post_url(@post), notice: "ツイートが作成されました" }
-        format.json { render :show, status: :created, location: @post }
+        redirect_to posts_path, notice: "ブログを作成しました！"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
+
 
   
   def update
@@ -56,6 +56,13 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
+  end
+
+
 
   private
     
